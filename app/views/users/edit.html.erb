@@ -1,0 +1,11 @@
+<h1>編集画面</h1>
+<!-- form_with部分 -->
+<%= form_with model:@user, local: true do |user| %>
+  <h4>名前</h4>
+  <%= user.text_field :name %>
+  <h4>紹介文</h4>
+  <%= user.text_area :introduction %>
+  <h4>画像</h4>
+  <%= user.attachment_field :profile_image %>
+  <%= user.submit '保存' %>
+<% end %>
