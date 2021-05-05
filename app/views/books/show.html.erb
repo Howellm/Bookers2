@@ -1,0 +1,44 @@
+
+<header>
+  <%= render 'layouts/shared/header', user: @user %>
+</header>
+<main>
+<p id="notice"></p>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <%= render 'layouts/shared/profile', user: @user, book: @book %>
+      <div class="col-md-8 offset-md-1">
+        <h2>Books</h2>
+        <table class = "table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Option</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to user_path(@book_detail.user_id) do %>
+                  <%= attachment_image_tag User.find(@book_detail.user_id), :profile_image, :fill, 40, 40, fallback: 'no_image.jpg', size: '40x40' %><br>
+                  <%= User.find(@book_detail.user_id).name %>
+                <% end %>
+              </td>
+              <td>
+              <%= link_to book_path(@book_detail) do %>
+                <%= @book_detail.title %>
+              <% end %>
+              </td>
+              <td>
+                <%= @book_detail.body %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
