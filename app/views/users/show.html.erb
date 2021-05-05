@@ -9,7 +9,7 @@
       <%= render 'layouts/shared/profile', user: @user, book: @book %>
       <div class="col-md-8 offset-md-1">
         <h2>Books</h2>
-        <table class = "table table-inverse">
+        <table class = "table table-inverse table-hover">
           <thead>
             <tr>
               <th></th>
@@ -25,7 +25,7 @@
                   <%= book.title %>
                 </td>
                 <td>
-                  <%= book.body %>
+                  <%= book.user_id %>
                 </td>
               </tr>
             <% end %>
