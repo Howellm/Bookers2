@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :configure_user_parameter, only: [:edit]
+  
   def index
     @user = User.find(current_user.id)
     @book = Book.new
@@ -18,7 +20,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-      redirect_to users_path
+      flash[:notice] = "You have updated user successfully."
+      redirect_to user_path(@user)
     else
       render :edit
     end
@@ -29,4 +32,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
+
+  def configure_user_parameter
+    if !(current_user == User.find(params[:id]))
+      redirect_to user_path(current_user)
+    end
+  end
+
 end
