@@ -7,7 +7,7 @@
         <% if @book.errors.any? %>
           <div class="error_explantation">
             <div class="error_title">
-              <h2>2 errors prohibited this book from being saved:</h2>
+              <h2><%= @book.errors.count %> errors prohibited this book from being saved:</h2>
             </div>
             <div class="error_content">
               <ul>
