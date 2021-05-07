@@ -12,6 +12,11 @@
 
   <body>
     <%= render 'layouts/shared/header', user: @user %>
+    <% if flash[:notice] %>
+      <p id="notice">
+        <%= flash[:notice] %>
+      </p>
+    <% end %>
     <%= yield %>
   </body>
   <footer>
