@@ -1,11 +1,28 @@
-<h1>編集画面</h1>
-<!-- form_with部分 -->
-<%= form_with model:@user, local: true do |user| %>
-  <h4>名前</h4>
-  <%= user.text_field :name %>
-  <h4>紹介文</h4>
-  <%= user.text_area :introduction %>
-  <h4>画像</h4>
-  <%= user.attachment_field :profile_image %>
-  <%= user.submit '保存' %>
-<% end %>
+<main>
+  <p id="notice"></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h2>User info</h2>
+        <!-- form_with部分 -->
+        <%= form_with model:@user, local: true do |user| %>
+        <div class="form-group">
+          <label for="user_name"></label>
+          <%= user.text_field :name, class: "user_name form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="user_image">Image</label>
+          <%= user.attachment_field :profile_image, class: "user_image form-control-file" %>
+        </div>
+        <div class="form-group">
+          <label for="user_introduction">Introduction</label>
+          <%= user.text_area :introduction, class: "user_introduction form-control" %>
+        </div>
+        <div class="form-group">
+          <%= user.submit 'Update User', class: "btn btn-secondary" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>
