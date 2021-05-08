@@ -58,5 +58,4 @@ class BooksController < ApplicationController
     end
   end
 
-
 end
